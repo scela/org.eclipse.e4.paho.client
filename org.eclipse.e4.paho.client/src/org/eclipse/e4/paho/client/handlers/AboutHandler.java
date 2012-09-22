@@ -24,7 +24,7 @@ import org.eclipse.swt.widgets.Shell;
 public class AboutHandler {
 	@Execute
 	public void execute(@Named(IServiceConstants.ACTIVE_SHELL) Shell shell) {
-		MessageDialog.openInformation(shell, "About", "e4 Application example.");
+		MessageDialog.openInformation(shell, "About", "This is a MQTT Gui app for Paho java.");
 	}
 	
 	

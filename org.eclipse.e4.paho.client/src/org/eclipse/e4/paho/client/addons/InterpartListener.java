@@ -51,8 +51,6 @@ public class InterpartListener {
 				partService.activate(detailPart,true);
 			}
 			
-			
-			
 		}
 	}
 

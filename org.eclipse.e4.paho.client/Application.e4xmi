@@ -6,12 +6,24 @@
       <children xsi:type="advanced:Perspective" xmi:id="_V14doAKTEeKLna70j2Clww">
         <children xsi:type="basic:PartSashContainer" xmi:id="_8kZ4oAKaEeKYS9T65f3CSw" elementId="org.eclipse.e4.paho.client.partsashcontainer.0" horizontal="true">
           <children xsi:type="basic:PartSashContainer" xmi:id="_V14doQKTEeKLna70j2Clww" containerData="6000">
-            <children xsi:type="basic:PartStack" xmi:id="_KzP88AKbEeKYS9T65f3CSw" elementId="org.eclipse.e4.paho.client.partstack.detailparts"/>
+            <children xsi:type="basic:PartStack" xmi:id="_KzP88AKbEeKYS9T65f3CSw" elementId="org.eclipse.e4.paho.client.partstack.detailparts">
+              <tags>NoAutoCollapse</tags>
+            </children>
           </children>
           <children xsi:type="basic:PartSashContainer" xmi:id="_Vne9wAKqEeKYS9T65f3CSw" elementId="org.eclipse.e4.paho.client.partsashcontainer.0" containerData="4000">
-            <children xsi:type="basic:PartStack" xmi:id="_V14dogKTEeKLna70j2Clww" elementId="stack.client" containerData="5000"/>
+            <children xsi:type="basic:PartStack" xmi:id="_V14dogKTEeKLna70j2Clww" elementId="stack.client" containerData="5000">
+              <tags>NoAutoCollapse</tags>
+            </children>
             <children xsi:type="basic:PartStack" xmi:id="_YJ4pEAKqEeKYS9T65f3CSw" elementId="stack.console" containerData="5000">
-              <children xsi:type="basic:Part" xmi:id="_YWhPgAKtEeKYS9T65f3CSw" elementId="org.eclipse.e4.paho.client.part.console" contributionURI="bundleclass://org.eclipse.e4.paho.client/org.eclipse.e4.paho.client.parts.ConsolePart" label="Activity log"/>
+              <tags>NoAutoCollapse</tags>
+              <children xsi:type="basic:Part" xmi:id="_YWhPgAKtEeKYS9T65f3CSw" elementId="org.eclipse.e4.paho.client.part.console" contributionURI="bundleclass://org.eclipse.e4.paho.client/org.eclipse.e4.paho.client.parts.ConsolePart" label="Activity log">
+                <handlers xmi:id="_96Ck8AUCEeK-qv5tZJthjQ" elementId="org.eclipse.e4.paho.client.handler.0" contributionURI="bundleclass://org.eclipse.e4.paho.client/org.eclipse.e4.paho.client.handlers.ClearConsoleHandler" command="_7U02MAUCEeK-qv5tZJthjQ"/>
+                <menus xmi:id="_ha5_8AUEEeK-qv5tZJthjQ" elementId="org.eclipse.e4.paho.client.menu.0">
+                  <tags>ViewMenu</tags>
+                  <children xsi:type="menu:HandledMenuItem" xmi:id="_h97NcAUEEeK-qv5tZJthjQ" elementId="org.eclipse.e4.paho.client.handledmenuitem.0" label="Clear" iconURI="platform:/plugin/org.eclipse.e4.paho.client/icons/save_edit.gif" command="_7U02MAUCEeK-qv5tZJthjQ"/>
+                </menus>
+                <toolbar xmi:id="_y52YgAUDEeK-qv5tZJthjQ" elementId="org.eclipse.e4.paho.client.toolbar.0"/>
+              </children>
             </children>
           </children>
         </children>
@@ -30,7 +42,6 @@
     <trimBars xmi:id="_V14dowKTEeKLna70j2Clww">
       <children xsi:type="menu:ToolBar" xmi:id="_V14dpAKTEeKLna70j2Clww" elementId="toolbar:org.eclipse.ui.main.toolbar">
         <children xsi:type="menu:HandledToolItem" xmi:id="_V14dpQKTEeKLna70j2Clww" iconURI="platform:/plugin/org.eclipse.e4.paho.client/icons/sample.gif" command="_V132jgKTEeKLna70j2Clww"/>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_V14dpgKTEeKLna70j2Clww" iconURI="platform:/plugin/org.eclipse.e4.paho.client/icons/save_edit.gif" command="_V14dkQKTEeKLna70j2Clww"/>
       </children>
     </trimBars>
   </children>
@@ -49,11 +60,12 @@
     <children xmi:id="_V132gwKTEeKLna70j2Clww" elementId="org.eclipse.ui.contexts.dialog" name="In Dialogs"/>
   </rootContext>
   <descriptors xmi:id="_taOikAKcEeKYS9T65f3CSw" elementId="org.eclipse.e4.paho.client.partdescriptor.clientmqtt" label="New Mqtt Client" contributionURI="bundleclass://org.eclipse.e4.paho.client/org.eclipse.e4.paho.client.parts.MqttClientPart"/>
-  <descriptors xmi:id="_aX7bsAKvEeKYS9T65f3CSw" elementId="org.eclipse.e4.paho.client.partdescriptor.clientdetails" label="" contributionURI="bundleclass://org.eclipse.e4.paho.client/org.eclipse.e4.paho.client.parts.ClientDetailsPart"/>
+  <descriptors xmi:id="_aX7bsAKvEeKYS9T65f3CSw" elementId="org.eclipse.e4.paho.client.partdescriptor.clientdetails" label="" allowMultiple="true" closeable="true" contributionURI="bundleclass://org.eclipse.e4.paho.client/org.eclipse.e4.paho.client.parts.ClientDetailsPart"/>
   <commands xmi:id="_V132igKTEeKLna70j2Clww" elementId="org.eclipse.ui.file.exit" commandName="quitCommand"/>
   <commands xmi:id="_V132jgKTEeKLna70j2Clww" elementId="org.eclipse.e4.paho.client.open" commandName="newClientCommand"/>
   <commands xmi:id="_V14dkQKTEeKLna70j2Clww" elementId="org.eclipse.ui.file.save" commandName="saveCommand"/>
   <commands xmi:id="_V14dlAKTEeKLna70j2Clww" elementId="org.eclipse.ui.help.aboutAction" commandName="aboutCommand"/>
+  <commands xmi:id="_7U02MAUCEeK-qv5tZJthjQ" elementId="org.eclipse.e4.paho.client.command.clearconsole" commandName="Clear console"/>
   <addons xmi:id="_V132hAKTEeKLna70j2Clww" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_V132hQKTEeKLna70j2Clww" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
   <addons xmi:id="_V132hgKTEeKLna70j2Clww" elementId="org.eclipse.e4.ui.bindings.service" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>
@@ -61,4 +73,5 @@
   <addons xmi:id="_V132iAKTEeKLna70j2Clww" elementId="org.eclipse.e4.ui.workbench.contexts.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.ContextProcessingAddon"/>
   <addons xmi:id="_V132iQKTEeKLna70j2Clww" elementId="org.eclipse.e4.ui.workbench.bindings.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.swt/org.eclipse.e4.ui.workbench.swt.util.BindingProcessingAddon"/>
   <addons xmi:id="_vEA48AKeEeKYS9T65f3CSw" elementId="org.eclipse.e4.paho.client.addon.0" contributionURI="bundleclass://org.eclipse.e4.paho.client/org.eclipse.e4.paho.client.addons.InterpartListener"/>
+  <addons xmi:id="_cK-d0ARIEeK6urZLOPL8og" elementId="org.eclipse.e4.paho.client.addon.0" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.addons.swt/org.eclipse.e4.ui.workbench.addons.dndaddon.DnDAddon"/>
 </application:Application>

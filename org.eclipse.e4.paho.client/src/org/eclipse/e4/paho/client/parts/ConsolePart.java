@@ -1,30 +1,24 @@
 package org.eclipse.e4.paho.client.parts;
 
-import java.beans.ConstructorProperties;
-
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
-import javax.inject.Named;
 
+import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.e4.paho.client.naming.INamingConstants;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.custom.ScrolledComposite;
-import org.eclipse.swt.layout.GridData;
+import org.eclipse.e4.ui.di.UIEventTopic;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.ScrolledComposite;
+import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
 
 public class ConsolePart {
 	
 	private Composite parent;
 	private Text text;
-	@Inject
-	@Optional
-	@Named(INamingConstants.APP_CONSOLE)
-	private String consoleText;
 	
 	@PostConstruct
-	public void postConstruct(Composite parent){
+	public void postConstruct(Composite parent,IEclipseContext context){
 		this.parent = parent;
 //		parent.setLayout(Gr);
 		
@@ -33,9 +27,15 @@ public class ConsolePart {
 		scrolledComposite.setExpandHorizontal(true);
 		scrolledComposite.setExpandVertical(true);
 //		scrolledComposite.setLayoutData(new GridData(GridData.FILL_BOTH));
-		
-		text = new Text(scrolledComposite, SWT.BORDER);
+		text = new Text(scrolledComposite, SWT.BORDER | SWT.MULTI);
+		context.set(INamingConstants.CONSLE_CONTROL, text);
 		scrolledComposite.setContent(text);
 		scrolledComposite.setMinSize(text.computeSize(SWT.DEFAULT, SWT.DEFAULT));
+	}
+	
+	@Inject
+	public void consoleUpdateEvent(@UIEventTopic(INamingConstants.CONSOLE_EVENT) @Optional String message){
+		if (message==null) return;
+		text.append(message+" \n");
 	}
 }

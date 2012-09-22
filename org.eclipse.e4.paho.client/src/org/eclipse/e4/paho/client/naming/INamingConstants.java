@@ -10,5 +10,7 @@ public interface INamingConstants {
 	public static final String NEWCLIENT_PART_REF = "newclient.part";
 	public static final String CLIENT_CREATED = "app/mqttclient/creation";
 	public static final String DETAIL_STACK_ID = "org.eclipse.e4.paho.client.partstack.detailparts";
+	public static final String CONSOLE_EVENT = "app/console";
+	public static final String CONSLE_CONTROL = "CONSOLE.CONTROL";
 
 }
