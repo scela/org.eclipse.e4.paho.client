@@ -1,7 +1,12 @@
 package org.eclipse.e4.paho.client.dialogs;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+import javax.naming.directory.InvalidSearchControlsException;
+
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.swt.graphics.Point;
@@ -22,6 +27,9 @@ import org.eclipse.core.databinding.UpdateValueStrategy;
 import org.eclipse.e4.paho.client.databinding.StringToCharArrayConverter;
 import org.eclipse.e4.paho.client.databinding.StringToMqttMessageConverter;
 import org.eclipse.e4.paho.client.databinding.StringToNumberConverter;
+import org.eclipse.e4.ui.services.IServiceConstants;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 
 public class ConnectionSettingsDialog extends Dialog {
 	private DataBindingContext m_bindingContext;
@@ -30,8 +38,13 @@ public class ConnectionSettingsDialog extends Dialog {
 	private Text password;
 	private Text connTimeout;
 
-	private MqttConnectOptions options;
-	private Button cleanSession;
+	@Inject
+	@Named(IServiceConstants.ACTIVE_SHELL)
+	private Shell shell;
+	
+	private MqttConnectOptions options = new MqttConnectOptions();
+	private Button cleanSession ;
+	protected boolean def=false;
 	
 	/**
 	 * Create the dialog.
@@ -39,13 +52,6 @@ public class ConnectionSettingsDialog extends Dialog {
 	 */
 	public ConnectionSettingsDialog(Shell parentShell) {
 		super(parentShell);
-		options = new MqttConnectOptions();
-		options.setCleanSession(true);
-		options.setConnectionTimeout(50);
-		options.setKeepAliveInterval(40);
-		options.setPassword("sopot".toCharArray());
-		options.setUserName("Cela");
-		
 	}
 
 	/**
@@ -62,7 +68,7 @@ public class ConnectionSettingsDialog extends Dialog {
 		
 		keepAlive = new Text(container, SWT.BORDER);
 		keepAlive.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-		
+		keepAlive.setText("60");
 		Label lblUserName = new Label(container, SWT.NONE);
 		lblUserName.setText("User name");
 		
@@ -79,13 +85,14 @@ public class ConnectionSettingsDialog extends Dialog {
 		lblCleanSession.setText("Clean session");
 		
 		cleanSession = new Button(container, SWT.CHECK);
-		
+		cleanSession.setSelection(true);
 		Label lblConnectionTimeout = new Label(container, SWT.NONE);
 		lblConnectionTimeout.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
 		lblConnectionTimeout.setText("Connection timeout");
 		
 		connTimeout = new Text(container, SWT.BORDER);
 		connTimeout.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		connTimeout.setText("30");
 
 		return container;
 	}
@@ -148,5 +155,38 @@ public class ConnectionSettingsDialog extends Dialog {
 //		bindingContext.bindValue(observeSelectionCleanSessionObserveWidget, cleanSessionOptionsObserveValue, null, new UpdateValueStrategy(UpdateValueStrategy.POLICY_NEVER));
 //		//
 		return bindingContext;
+	}
+	
+	@Override
+	protected void okPressed() {
+		if (!def){
+			if (!validateOptions()){
+				MessageDialog.openError(shell, "Error", "Error validating connection settings.");
+				return;
+			}
+			options = new MqttConnectOptions();
+			options.setCleanSession(cleanSession.getSelection());
+			options.setConnectionTimeout(Integer.valueOf(connTimeout.getText()));
+			options.setKeepAliveInterval(Integer.valueOf(keepAlive.getText()));
+			if (!username.getText().isEmpty())
+				options.setUserName(username.getText());
+			if (!password.getText().isEmpty())
+			options.setPassword(password.getTextChars());
+			
+		}
+		super.okPressed();
+	}
+
+	private boolean validateOptions() {
+		if ((connTimeout.getText().isEmpty())||(keepAlive.getText().isEmpty())) return false
+				;
+		try {
+		Integer.valueOf(connTimeout.getText());
+		Integer.valueOf(keepAlive.getText());
+		}
+		catch (NumberFormatException nfe){
+			return false;
+		}
+		return true;
 	}
 }

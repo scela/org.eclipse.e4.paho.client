@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_V132gAKTEeKLna70j2Clww" elementId="org.eclipse.e4.ide.application" bindingContexts="_V132gQKTEeKLna70j2Clww">
-  <children xsi:type="basic:TrimmedWindow" xmi:id="_V14dlwKTEeKLna70j2Clww" label="org.eclipse.e4.paho.client" width="500" height="400">
+  <children xsi:type="basic:TrimmedWindow" xmi:id="_V14dlwKTEeKLna70j2Clww" label="Eclipse 4 client for Paho" width="500" height="400">
     <tags>shellMaximized</tags>
     <children xsi:type="advanced:PerspectiveStack" xmi:id="_V14dnwKTEeKLna70j2Clww">
       <children xsi:type="advanced:Perspective" xmi:id="_V14doAKTEeKLna70j2Clww">
@@ -30,29 +30,26 @@
       </children>
     </children>
     <mainMenu xmi:id="_V14dmAKTEeKLna70j2Clww" elementId="menu:org.eclipse.ui.main.menu">
-      <children xsi:type="menu:Menu" xmi:id="_V14dmQKTEeKLna70j2Clww" label="File">
-        <children xsi:type="menu:HandledMenuItem" xmi:id="_V14dmgKTEeKLna70j2Clww" label="Open" iconURI="platform:/plugin/org.eclipse.e4.paho.client/icons/sample.gif" command="_V132jgKTEeKLna70j2Clww"/>
-        <children xsi:type="menu:HandledMenuItem" xmi:id="_V14dmwKTEeKLna70j2Clww" label="Save" iconURI="platform:/plugin/org.eclipse.e4.paho.client/icons/save_edit.gif" command="_V14dkQKTEeKLna70j2Clww"/>
+      <children xsi:type="menu:Menu" xmi:id="_V14dmQKTEeKLna70j2Clww" label="Actions">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_V14dmgKTEeKLna70j2Clww" label="New client" iconURI="platform:/plugin/org.eclipse.e4.paho.client/icons/sample.gif" command="_V132jgKTEeKLna70j2Clww"/>
         <children xsi:type="menu:HandledMenuItem" xmi:id="_V14dnAKTEeKLna70j2Clww" label="Quit" command="_V132igKTEeKLna70j2Clww"/>
       </children>
-      <children xsi:type="menu:Menu" xmi:id="_V14dnQKTEeKLna70j2Clww" label="Help">
+      <children xsi:type="menu:Menu" xmi:id="_V14dnQKTEeKLna70j2Clww" label="About">
         <children xsi:type="menu:HandledMenuItem" xmi:id="_V14dngKTEeKLna70j2Clww" label="About" command="_V14dlAKTEeKLna70j2Clww"/>
       </children>
     </mainMenu>
     <trimBars xmi:id="_V14dowKTEeKLna70j2Clww">
       <children xsi:type="menu:ToolBar" xmi:id="_V14dpAKTEeKLna70j2Clww" elementId="toolbar:org.eclipse.ui.main.toolbar">
-        <children xsi:type="menu:HandledToolItem" xmi:id="_V14dpQKTEeKLna70j2Clww" iconURI="platform:/plugin/org.eclipse.e4.paho.client/icons/sample.gif" command="_V132jgKTEeKLna70j2Clww"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_V14dpQKTEeKLna70j2Clww" label="New client" iconURI="platform:/plugin/org.eclipse.e4.paho.client/icons/sample.gif" tooltip="Creates a new mqtt client with default or customized settings" command="_V132jgKTEeKLna70j2Clww"/>
       </children>
     </trimBars>
   </children>
   <handlers xmi:id="_V132iwKTEeKLna70j2Clww" contributionURI="bundleclass://org.eclipse.e4.paho.client/org.eclipse.e4.paho.client.handlers.QuitHandler" command="_V132igKTEeKLna70j2Clww"/>
   <handlers xmi:id="_V132jwKTEeKLna70j2Clww" contributionURI="bundleclass://org.eclipse.e4.paho.client/org.eclipse.e4.paho.client.handlers.NewMqttClientHandler" command="_V132jgKTEeKLna70j2Clww"/>
-  <handlers xmi:id="_V14dkgKTEeKLna70j2Clww" contributionURI="bundleclass://org.eclipse.e4.paho.client/org.eclipse.e4.paho.client.handlers.SaveHandler" command="_V14dkQKTEeKLna70j2Clww"/>
   <handlers xmi:id="_V14dlQKTEeKLna70j2Clww" contributionURI="bundleclass://org.eclipse.e4.paho.client/org.eclipse.e4.paho.client.handlers.AboutHandler" command="_V14dlAKTEeKLna70j2Clww"/>
   <bindingTables xmi:id="_V132jAKTEeKLna70j2Clww" bindingContext="_V132gQKTEeKLna70j2Clww">
     <bindings xmi:id="_V132jQKTEeKLna70j2Clww" keySequence="M1+Q" command="_V132igKTEeKLna70j2Clww"/>
-    <bindings xmi:id="_V14dkAKTEeKLna70j2Clww" keySequence="M1+O" command="_V132jgKTEeKLna70j2Clww"/>
-    <bindings xmi:id="_V14dkwKTEeKLna70j2Clww" keySequence="M1+S" command="_V14dkQKTEeKLna70j2Clww"/>
+    <bindings xmi:id="_V14dkAKTEeKLna70j2Clww" keySequence="M1+N" command="_V132jgKTEeKLna70j2Clww"/>
     <bindings xmi:id="_V14dlgKTEeKLna70j2Clww" keySequence="M1+A" command="_V14dlAKTEeKLna70j2Clww"/>
   </bindingTables>
   <rootContext xmi:id="_V132gQKTEeKLna70j2Clww" elementId="org.eclipse.ui.contexts.dialogAndWindow" name="In Dialog and Windows">
@@ -63,7 +60,6 @@
   <descriptors xmi:id="_aX7bsAKvEeKYS9T65f3CSw" elementId="org.eclipse.e4.paho.client.partdescriptor.clientdetails" label="" allowMultiple="true" closeable="true" contributionURI="bundleclass://org.eclipse.e4.paho.client/org.eclipse.e4.paho.client.parts.ClientDetailsPart"/>
   <commands xmi:id="_V132igKTEeKLna70j2Clww" elementId="org.eclipse.ui.file.exit" commandName="quitCommand"/>
   <commands xmi:id="_V132jgKTEeKLna70j2Clww" elementId="org.eclipse.e4.paho.client.open" commandName="newClientCommand"/>
-  <commands xmi:id="_V14dkQKTEeKLna70j2Clww" elementId="org.eclipse.ui.file.save" commandName="saveCommand"/>
   <commands xmi:id="_V14dlAKTEeKLna70j2Clww" elementId="org.eclipse.ui.help.aboutAction" commandName="aboutCommand"/>
   <commands xmi:id="_7U02MAUCEeK-qv5tZJthjQ" elementId="org.eclipse.e4.paho.client.command.clearconsole" commandName="Clear console"/>
   <addons xmi:id="_V132hAKTEeKLna70j2Clww" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>

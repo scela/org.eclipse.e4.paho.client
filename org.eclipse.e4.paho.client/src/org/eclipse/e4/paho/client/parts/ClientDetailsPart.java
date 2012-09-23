@@ -151,7 +151,7 @@ public class ClientDetailsPart{
 										+ " disconnected");
 								btnConnectToServer.setText("Connect");
 								lblStatus.setText("Disconnected");
-								eventBroker.post(INamingConstants.CONSOLE_EVENT, "Disconnected successfully");
+								eventBroker.post(INamingConstants.CONSOLE_EVENT, "Disconnected");
 							} catch (MqttException e1) {
 								lblStatus.setText("Error trying to disconnect");
 								eventBroker.post(INamingConstants.CONSOLE_EVENT, "Error trying to disconnect");
@@ -199,11 +199,14 @@ public class ClientDetailsPart{
 		btnUnsubscribe.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				if (topic.getText().isEmpty() || (!client.isConnected())) return;
+				if (topic.getText().isEmpty() || (!client.isConnected())) {
+					MessageDialog.openWarning(shell, "Warning", "Topic is empty or you are not connected to the broker.");
+					return;
+				}
 				try {
 					client.unsubscribe(topic.getText());
 					clientLog.append("Unsubscribed from topic: "+topic.getText()+"\n");
-					eventBroker.post(INamingConstants.CONSOLE_EVENT, "Unsubscribtion");
+					eventBroker.post(INamingConstants.CONSOLE_EVENT, "Unsubscription");
 				} catch (MqttException e1) {
 					clientLog.append("Error unsubscribing from topic: "+topic.getText()+"\n");
 				}
@@ -217,13 +220,16 @@ public class ClientDetailsPart{
 		btnSubscribe.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				if (topic.getText().isEmpty() || (!client.isConnected())) return;
+				if (topic.getText().isEmpty() || (!client.isConnected())) {
+					MessageDialog.openWarning(shell, "Warning", "Topic is empty or you are not connected to the broker.");
+					return;
+				}
 				try {
 					client.subscribe(topic.getText());
 					clientLog.append("Subscribed to topic: "+topic.getText()+"\n");
 					System.err.println("Subscribed to topic: "
 							+ topic.getText() + "\n");
-					eventBroker.post(INamingConstants.CONSOLE_EVENT, "Subscribtion");
+					eventBroker.post(INamingConstants.CONSOLE_EVENT, "Subscription");
 				} catch (MqttSecurityException e1) {
 					clientLog.append("Security error subscribing to topic: "+topic.getText()+"\n");
 					e1.printStackTrace();
@@ -247,7 +253,10 @@ public class ClientDetailsPart{
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				final String s = topic.getText();
-				if (s.isEmpty() || (!client.isConnected())) return;
+				if (s.isEmpty() || (!client.isConnected())) {
+					MessageDialog.openWarning(shell, "Warning", "Topic is empty or you are not connected to the broker.");
+					return;
+				}
 				PublishMessageDialog pmd = new PublishMessageDialog(shell, s);
 				if (pmd.open()==Dialog.OK){
 					final MqttTopic topic2 = client.getTopic(s);
