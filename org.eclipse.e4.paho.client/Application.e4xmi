@@ -5,16 +5,16 @@
     <children xsi:type="advanced:PerspectiveStack" xmi:id="_V14dnwKTEeKLna70j2Clww">
       <children xsi:type="advanced:Perspective" xmi:id="_V14doAKTEeKLna70j2Clww">
         <children xsi:type="basic:PartSashContainer" xmi:id="_8kZ4oAKaEeKYS9T65f3CSw" elementId="org.eclipse.e4.paho.client.partsashcontainer.0" horizontal="true">
-          <children xsi:type="basic:PartSashContainer" xmi:id="_V14doQKTEeKLna70j2Clww" containerData="6000">
+          <children xsi:type="basic:PartSashContainer" xmi:id="_V14doQKTEeKLna70j2Clww" containerData="7000">
             <children xsi:type="basic:PartStack" xmi:id="_KzP88AKbEeKYS9T65f3CSw" elementId="org.eclipse.e4.paho.client.partstack.detailparts">
               <tags>NoAutoCollapse</tags>
             </children>
           </children>
-          <children xsi:type="basic:PartSashContainer" xmi:id="_Vne9wAKqEeKYS9T65f3CSw" elementId="org.eclipse.e4.paho.client.partsashcontainer.0" containerData="4000">
-            <children xsi:type="basic:PartStack" xmi:id="_V14dogKTEeKLna70j2Clww" elementId="stack.client" containerData="5000">
+          <children xsi:type="basic:PartSashContainer" xmi:id="_Vne9wAKqEeKYS9T65f3CSw" elementId="org.eclipse.e4.paho.client.partsashcontainer.0" containerData="3000">
+            <children xsi:type="basic:PartStack" xmi:id="_V14dogKTEeKLna70j2Clww" elementId="stack.client" containerData="3500">
               <tags>NoAutoCollapse</tags>
             </children>
-            <children xsi:type="basic:PartStack" xmi:id="_YJ4pEAKqEeKYS9T65f3CSw" elementId="stack.console" containerData="5000">
+            <children xsi:type="basic:PartStack" xmi:id="_YJ4pEAKqEeKYS9T65f3CSw" elementId="stack.console" containerData="6500">
               <tags>NoAutoCollapse</tags>
               <children xsi:type="basic:Part" xmi:id="_YWhPgAKtEeKYS9T65f3CSw" elementId="org.eclipse.e4.paho.client.part.console" contributionURI="bundleclass://org.eclipse.e4.paho.client/org.eclipse.e4.paho.client.parts.ConsolePart" label="Activity log">
                 <handlers xmi:id="_96Ck8AUCEeK-qv5tZJthjQ" elementId="org.eclipse.e4.paho.client.handler.0" contributionURI="bundleclass://org.eclipse.e4.paho.client/org.eclipse.e4.paho.client.handlers.ClearConsoleHandler" command="_7U02MAUCEeK-qv5tZJthjQ"/>
